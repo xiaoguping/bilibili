@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--    windows下路径, D:\downloads\xxx.jar-->
+    <classPathEntry location="/Users/xgp/Desktop/Item/imooc_bilibili_2/mysql-connector-java-8.0.26.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--        不再追加xml内容-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo?characterEncoding=utf-8"
+                        userId="root"
+                        password="13110211">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+
+        <javaModelGenerator targetPackage="com.imooc.bilibili.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <!--            <property name="trimStrings" value="true" />-->
+        </javaModelGenerator>
+
+
+        <table tableName="t_video_operation" domainObjectName="UserPreference" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>

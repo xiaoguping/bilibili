@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <div id="messages"></div>
+    <input type="text" id="messageInput" placeholder="输入消息">
+    <button onclick="sendMessage()">发送</button>
+
+    <script>
+        const socket = new WebSocket("ws://localhost:8081/testWebSocketService");
+
+        socket.onopen = function(event) {
+            console.log("WebSocket连接已建立");
+        };
+
+        socket.onmessage = function(event) {
+            console.log("收到消息:", event.data);
+
+            const messagesDiv = document.getElementById("messages");
+            messagesDiv.innerHTML += "<p>" + event.data + "</p>";
+        };
+
+        socket.onclose = function(event) {
+            console.log("WebSocket连接已关闭");
+        };
+
+        socket.onerror = function(error) {
+            console.error("WebSocket错误:", error);
+        };
+
+        function sendMessage() {
+            const message = document.getElementById("messageInput").value;
+            socket.send(message);
+            document.getElementById("messageInput").value = ""; // 清空输入框
+        }
+    </script>
+</body>
+</html>
