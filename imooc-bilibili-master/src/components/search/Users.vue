@@ -1,11 +1,11 @@
 <template>
 	<div class="user-query-list-wrap">
 		<div class="user-list-wrap" v-if="list.length > 0">
-			<div class="user-item" v-for="(item,index) in list" :key="index">
+			<div class="user-item" v-if="item.nick" v-for="(item,index) in list" :key="index">
 				<img class="avatar" src="../../assets/image/home/avatar_users.jpeg" alt="">
 				<div class="infos">
 					<div class="infos-top">
-						<div class="nick">{{ item.nick }}</div>
+						<div class="nick" v-html = "item.nick"></div>
 						<div class="follow" :class="[item.followed ? 'disable' : '']" @click="follow(item.userId)">{{ item.followed ? '已关注' : '关注'}}</div>
 					</div>
 					<div class="infos-sign">{{ item.sign }}</div>
@@ -38,6 +38,13 @@
 		},
 		methods: {
 			async follow(id) {
+				if(!localStorage.getItem("token")){
+					this.$message({
+						type: "error",
+						message: "请先登陆"
+					})
+					return;
+				}
 				let params = {
 					followingId: id
 				}

@@ -137,6 +137,7 @@ async function Api(methodType, url, params) {
 	if (resData.data.code === '0') {
 		return resData.data;
 	} else if (resData.data.code === '500') {
+		console.log(resData.data)
 		Message({
 			showClose: true,
 			message: resData.data.msg,

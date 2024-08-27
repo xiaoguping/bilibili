@@ -53,8 +53,23 @@
 					if(resToken && resToken.code === '0'){
 						localStorage.setItem('token',resToken.data);
 						this.$store.commit('setToken',resToken.data);
+						this.$router.go(-1);
+
 					}
-					this.$router.go(-1);
+					//添加用户默认分组
+					// let resGroup = await api.putFollowGroup()
+					// if(resGroup && resGroup.code ==='0'){
+					//注册成功后，请求登陆
+					//  	let resToken = await api.login(_params)
+					//  	if(resToken && resToken.code === '0'){
+					// 		localStorage.setItem('token',resToken.data);
+					// 		this.$store.commit('setToken',resToken.data);
+					// 		this.$router.go(-1);
+
+					// 	}
+					
+					// }
+					
 				}
 			}
 		},
