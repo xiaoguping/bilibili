@@ -1,3 +1,5 @@
 IP-CIDR,10.147.17.0/24,no-resolve
 DST-PORT,9993
 DOMAIN,zerotier.com
+DOMAIN-SUFFIX,deepseek.com
+DOMAIN-SUFFIX,doubao.com
